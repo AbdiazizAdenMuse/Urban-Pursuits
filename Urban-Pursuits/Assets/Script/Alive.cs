@@ -22,24 +22,24 @@ public class Alive : MonoBehaviour
         {
             rb.velocity = new Vector3(rb.velocity.x, jump, rb.velocity.z);
         }
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, speed);
         }
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.RightArrow))
         {
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, -speed);
         }
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.UpArrow))
         {
             rb.velocity = new Vector3(speed, rb.velocity.y, rb.velocity.z);
         }
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.DownArrow))
         {
             rb.velocity = new Vector3(-speed, rb.velocity.y, rb.velocity.z);
         }
 
-        cam.transform.position = new Vector3(transform.position.x, transform.position.y+6f, transform.position.z-8.5f);
+        cam.transform.position = new Vector3(transform.position.x-12.33f, transform.position.y+5f, transform.position.z);
     }
     private void OnCollisionEnter(Collision other)
     {
