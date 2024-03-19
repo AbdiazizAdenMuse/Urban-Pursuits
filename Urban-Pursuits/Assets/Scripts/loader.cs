@@ -14,7 +14,9 @@ public class loader : MonoBehaviour
     private void Update()
     {
         timeElapsed += Time.deltaTime;
-       // loadingScreen.SetActive(true);
+       
+       
+        loadingScreen.SetActive(true);
 
         if (timeElapsed > timeDelay)
         {
