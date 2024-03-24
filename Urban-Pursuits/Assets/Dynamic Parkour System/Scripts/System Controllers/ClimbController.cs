@@ -119,7 +119,7 @@ namespace Climbing
             }
         }
 
-        public void onDrawGizmos()
+        public void OnDrawGizmos()
         {
             if (targetPoint != null && currentPoint != null)
             {
@@ -129,7 +129,7 @@ namespace Climbing
                 Gizmos.DrawSphere(currentPoint.transform.position, 0.1f);
             }
         }
-        public void onAnimatorIK(int layerIndex)
+        public void OnAnimatorIK(int layerIndex)
         {
             //Reset IK Weight Position to default if not on Ledge
             if (!onLedge)
