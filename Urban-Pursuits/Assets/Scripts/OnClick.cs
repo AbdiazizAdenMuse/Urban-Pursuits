@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class OnClick : MonoBehaviour
 {
@@ -11,8 +12,8 @@ public class OnClick : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void startGame()
     {
-       
+       SceneManager.LoadScene(1);
     }
 }

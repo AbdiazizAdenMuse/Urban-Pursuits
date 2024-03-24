@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class loader : MonoBehaviour
 {
-    [SerializeField] GameObject loadingScreen;
     [SerializeField] Slider slider;
     [SerializeField] Text progressText;
 
@@ -14,14 +13,18 @@ public class loader : MonoBehaviour
     private void Update()
     {
         timeElapsed += Time.deltaTime;
+<<<<<<< Updated upstream
        
        
         loadingScreen.SetActive(true);
+=======
+        
+>>>>>>> Stashed changes
 
         if (timeElapsed > timeDelay)
         {
-            
-            StartCoroutine(loadAsynchronously(1));
+
+            StartCoroutine(loadAsynchronously(2));
         }
     }
     public void loadScene(int sceneIndex)
@@ -43,3 +46,4 @@ public class loader : MonoBehaviour
         }
     }
 }
+
