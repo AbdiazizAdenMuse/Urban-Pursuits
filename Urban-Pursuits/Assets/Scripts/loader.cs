@@ -13,13 +13,7 @@ public class loader : MonoBehaviour
     private void Update()
     {
         timeElapsed += Time.deltaTime;
-<<<<<<< Updated upstream
-       
-       
-        loadingScreen.SetActive(true);
-=======
         
->>>>>>> Stashed changes
 
         if (timeElapsed > timeDelay)
         {
