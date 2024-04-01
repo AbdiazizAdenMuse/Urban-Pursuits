@@ -54,12 +54,12 @@ namespace Climbing
 
         public override void OnAnimatorIK(int layerIndex)
         {
-            climbController.OnAnimatorIK(layerIndex);
+            climbController.onAnimatorIK(layerIndex);
         }
 
         public override void DrawGizmos()
         {
-            climbController.OnDrawGizmos();
+            climbController.onDrawGizmos();
         }
     }
 }

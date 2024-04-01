@@ -6,6 +6,18 @@ TagManager:
   tags:
   - Ground
   - Obstacle
+  - Vault
+  - Slide
+  - Pole
+  - Reach
+  - Deep Jump
+  - Easy
+  - Medium
+  - Hard
+  - Weapon
+  - SecondCamera
+  - BulletSpawn
+  - GM
   layers:
   - Default
   - TransparentFX
