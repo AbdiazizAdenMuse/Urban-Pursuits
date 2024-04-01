@@ -1,25 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class automove : MonoBehaviour
 {
-    [SerializeField]
-    private WaypointPath _waypointPath;
-
-    [SerializeField]
-    private float _speed;
+    [SerializeField] private WaypointPath _waypointPath;
+    [SerializeField] private float _speed;
 
     private int _targetWaypointIndex;
-
-    private Transform _previousWaypoint;
     private Transform _targetWaypoint;
-
-    private float _timeToWaypoint;
-    private float _elapsedTime;
-
-    // Add this variable
-    public bool isMoving = false;
+    private bool isMoving = false;
 
     void Start()
     {
@@ -30,14 +18,10 @@ public class automove : MonoBehaviour
     {
         if (isMoving)
         {
-            _elapsedTime += Time.deltaTime;
+            float step = _speed * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, _targetWaypoint.position, step);
 
-            float elapsedPercentage = _elapsedTime / _timeToWaypoint;
-            elapsedPercentage = Mathf.SmoothStep(0, 1, elapsedPercentage);
-            transform.position = Vector3.Lerp(_previousWaypoint.position, _targetWaypoint.position, elapsedPercentage);
-            transform.rotation = Quaternion.Lerp(_previousWaypoint.rotation, _targetWaypoint.rotation, elapsedPercentage);
-
-            if (elapsedPercentage >= 1)
+            if (transform.position == _targetWaypoint.position)
             {
                 TargetNextWaypoint();
             }
@@ -46,33 +30,29 @@ public class automove : MonoBehaviour
 
     private void TargetNextWaypoint()
     {
-        _previousWaypoint = _waypointPath.GetWaypoint(_targetWaypointIndex);
         _targetWaypointIndex = _waypointPath.GetNextWaypointIndex(_targetWaypointIndex);
         _targetWaypoint = _waypointPath.GetWaypoint(_targetWaypointIndex);
 
-        _elapsedTime = 0;
-
-        float distanceToWaypoint = Vector3.Distance(_previousWaypoint.position, _targetWaypoint.position);
-        _timeToWaypoint = distanceToWaypoint / _speed;
+        if (_targetWaypointIndex == 0)
+        {
+            isMoving = false; // Stop moving when reaching the last waypoint
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        // Check if the collider belongs to the player and if the player is jumping
-        if (other.gameObject.CompareTag("Player") && other.gameObject.GetComponent<Rigidbody>().velocity.y > 0)
+        if (!other.isTrigger)
         {
             other.transform.SetParent(transform);
-            isMoving = true;
         }
+        isMoving = true; // Start moving when something triggers the platform
     }
 
     private void OnTriggerExit(Collider other)
     {
-        // Check if the collider belongs to the player
-        if (other.gameObject.CompareTag("Player"))
+        if (!other.isTrigger)
         {
             other.transform.SetParent(null);
-            isMoving = false;
         }
     }
 }
