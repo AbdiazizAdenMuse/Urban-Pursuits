@@ -72607,6 +72607,10 @@ PrefabInstance:
       propertyPath: ledgeLayer.m_Bits
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5556358534646836588, guid: 9e70d0b595d510742bfdf66867f64069, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
