@@ -18,6 +18,8 @@ TagManager:
   - SecondCamera
   - BulletSpawn
   - GM
+  - LevelPart
+  - dummie
   layers:
   - Default
   - TransparentFX
