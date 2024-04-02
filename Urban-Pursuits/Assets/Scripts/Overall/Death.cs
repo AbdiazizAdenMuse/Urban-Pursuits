@@ -21,7 +21,7 @@ public class Death : MonoBehaviour
             if (respawnCount >= 3)
             {
                 // Load the "GameOver" scene or perform any other game over logic
-                SceneManager.LoadScene("GameOver");
+                SceneManager.LoadScene("Game Over");
             }
         }
     }

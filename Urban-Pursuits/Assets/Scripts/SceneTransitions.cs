@@ -19,7 +19,7 @@ public class SceneTransitions : MonoBehaviour
     void Update()
     {
         // Check if the Timer script is found and the elapsed time is greater than 10f
-        if (timer != null && timer.elapsedTime > 30f)
+        if (timer != null && timer.elapsedTime > 1000f)
         {
             StartCoroutine(LoadSceneCoroutine());
         }
@@ -28,7 +28,7 @@ public class SceneTransitions : MonoBehaviour
     IEnumerator LoadSceneCoroutine()
     {
         transitionAnum.SetTrigger("end");
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(2f);
         SceneManager.LoadScene(SceneName);
     }
 }

@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 public class OnClick : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
+    public void quitGame()
     {
-        
+        Application.Quit();
     }
 
     // Update is called once per frame

@@ -457,7 +457,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: In a city where danger lurks around every corner, one man embarks on a
-    mission of love and vengeance....
+    mission to hunt and vengeance....
 --- !u!222 &320502660
 CanvasRenderer:
   m_ObjectHideFlags: 0

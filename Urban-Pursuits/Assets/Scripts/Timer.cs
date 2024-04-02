@@ -9,8 +9,8 @@ public class Timer : MonoBehaviour
     [SerializeField] TextMeshProUGUI timeText;
    
     // [SerializeField] string difficulty;
-    public float elapsedTime = 0.0f;
-    float easyLevel = 30f;
+    public float elapsedTime = 300.0f;
+    float easyLevel = 150f;
     float mediumLevel = 10f;
     float hardLevel = 15f;
    
@@ -22,12 +22,13 @@ public class Timer : MonoBehaviour
         int seconds = Mathf.FloorToInt(elapsedTime % 60);
         timeText.text = string.Format("{0:00}:{1:00}",minutes,seconds);
 
+        /**
         if (elapsedTime > easyLevel)
         {
             timeText.color = Color.red;
             timeText.color = Color.clear;
         }
-        /**
+      
         if (elapsedTime > mediumLevel)
         {
             timeText.color = Color.red;
