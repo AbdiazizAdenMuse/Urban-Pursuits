@@ -7,21 +7,21 @@ using Unity.VisualScripting;
 public class Timer : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI timeText;
-   
+
     // [SerializeField] string difficulty;
-    public float elapsedTime = 300.0f;
-    float easyLevel = 150f;
+    public float elapsedTime;
+    float easyLevel = 30f;
     float mediumLevel = 10f;
     float hardLevel = 15f;
-   
+
     // Update is called once per frame
-   void Update()
+    void Update()
     {
+
         elapsedTime += Time.deltaTime;
         int minutes = Mathf.FloorToInt(elapsedTime / 60);
         int seconds = Mathf.FloorToInt(elapsedTime % 60);
-        timeText.text = string.Format("{0:00}:{1:00}",minutes,seconds);
-
+        timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
         /**
         if (elapsedTime > easyLevel)
         {
@@ -43,14 +43,14 @@ public class Timer : MonoBehaviour
        */
     }
 
-    public void easyDifficulty ()
+    public void easyDifficulty()
     {
-        
-        
+
+
     }
     public void mediumDifficulty()
     {
-      
+
 
     }
 }

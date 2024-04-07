@@ -16,4 +16,17 @@ public class OnClick : MonoBehaviour
     {
        SceneManager.LoadScene(1);
     }
+    public void newGame()
+    {
+        
+        SceneManager.LoadScene("Plat World");
+    }
+    public void backToMainMenu() {
+        SceneManager.LoadScene("Login");
+    }
+    public void practice()
+    {
+        SceneManager.LoadScene("Practice");
+    }
+
 }

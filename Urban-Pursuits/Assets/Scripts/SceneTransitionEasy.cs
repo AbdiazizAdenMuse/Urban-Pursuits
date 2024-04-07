@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneTransitions : MonoBehaviour
+public class SceneTransitionEasy : MonoBehaviour
 {
     public Animator transitionAnum;
     public string SceneName;
@@ -19,7 +19,7 @@ public class SceneTransitions : MonoBehaviour
     void Update()
     {
         // Check if the Timer script is found and the elapsed time is greater than 10f
-        if (timer != null && timer.elapsedTime > 1000f)
+        if (timer != null && timer.elapsedTime > 10f)
         {
             StartCoroutine(LoadSceneCoroutine());
         }

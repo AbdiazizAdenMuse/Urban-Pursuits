@@ -1,28 +1,41 @@
+using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement; // Required for scene loading
+using UnityEngine.SceneManagement;
 
 public class Death : MonoBehaviour
 {
-    public Transform respawnPoint; // Reference to the initial respawn point (assign in the Inspector)
-    private int respawnCount = 0; // Counter for respawns
+    public Transform respawnPoint;
+    private int respawnCount = 0;
+    [SerializeField] TextMeshProUGUI liveCount;
+    int liveCountIndex = 5;
+    private bool hasTriggered = false; // Flag to track if the trigger has been activated
 
     private void OnTriggerEnter(Collider other)
     {
-        // Check if the colliding object is the player (you can adjust the tag as needed)
-        if (other.CompareTag("Player"))
+        // Check if the colliding object is the player and the trigger hasn't been activated yet
+        if (other.CompareTag("Player") && !hasTriggered)
         {
-            // Move the player to the updated respawn point
+            hasTriggered = true; // Set the flag to true
+            liveCountIndex -= 1;
             other.transform.position = respawnPoint.position;
+            liveCount.text = liveCountIndex.ToString();
 
-            // Increment the respawn count
             respawnCount++;
 
-            // Check if the respawn count reaches 3
-            if (respawnCount >= 5)
+            // Check if liveCountIndex is less than or equal to zero or respawnCount is greater than 7
+            if (liveCountIndex <= 0 || respawnCount > 7)
             {
-                // Load the "GameOver" scene or perform any other game over logic
                 SceneManager.LoadScene("Game Over");
             }
+        }
+    }
+
+    // You might also want to reset the trigger flag when the player leaves the collider
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            hasTriggered = false;
         }
     }
 }
