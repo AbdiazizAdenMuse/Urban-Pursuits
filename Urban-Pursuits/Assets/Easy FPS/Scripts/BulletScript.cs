@@ -15,6 +15,19 @@ public class BulletScript : MonoBehaviour {
 	[Tooltip("Put Weapon layer and Player layer to ignore bullet raycast.")]
 	public LayerMask ignoreLayer;
 
+	[Tooltip("Particle system for the bullet trail")]
+    public ParticleSystem trailEffect;
+
+	void Start()
+    {
+        // Instantiate the trail effect at the bullet's position and parent it to the bullet
+        if (trailEffect != null)
+        {
+            ParticleSystem trailInstance = Instantiate(trailEffect, transform.position, Quaternion.identity, transform);
+            trailInstance.Play();
+        }
+    }
+
 	/*
 	* Uppon bullet creation with this script attatched,
 	* bullet creates a raycast which searches for corresponding tags.
@@ -29,9 +42,13 @@ public class BulletScript : MonoBehaviour {
 					Destroy(gameObject);
 				}
 				if(hit.transform.tag == "Dummie"){
-					Instantiate(bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
-					Destroy(gameObject);
-				}
+    Instantiate(bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
+    EnemyHealth enemyHealth = hit.transform.GetComponent<EnemyHealth>();
+    if (enemyHealth != null)
+    {
+        enemyHealth.TakeDamage(20f); // Replace 20f with the actual damage amount
+    }
+}
 			}		
 			Destroy(gameObject);
 		}

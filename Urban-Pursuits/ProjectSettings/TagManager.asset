@@ -21,6 +21,7 @@ TagManager:
   - LevelPart
   - dummie
   - PlayerBullet
+  - Dummie
   layers:
   - Default
   - TransparentFX

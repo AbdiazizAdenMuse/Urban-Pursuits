@@ -34,9 +34,13 @@ public class EnemyAI : MonoBehaviour
         // Check if the enemy is within the desired distance range
         if (distanceToPlayer >= minDistance && distanceToPlayer <= maxDistance)
         {
-            // If the enemy is within the range, stop moving
+            // If the enemy is within the range, stop moving and play idle animation
             animator.SetBool("run", false);
-            return;
+        }
+        else
+        {
+            // If the enemy is not within the range, play running animation
+            animator.SetBool("run", true);
         }
 
         // Move towards the player while maintaining minimum distance
@@ -44,13 +48,11 @@ public class EnemyAI : MonoBehaviour
         {
             // If the player is too far, move towards the player
             transform.position = Vector3.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
-            animator.SetBool("run", true);
         }
         else if (distanceToPlayer < minDistance)
         {
             // If the player is too close, move away from the player
             transform.position = Vector3.MoveTowards(transform.position, player.position, -moveSpeed * Time.deltaTime);
-            animator.SetBool("run", true);
         }
 
         // Check if in shooting range

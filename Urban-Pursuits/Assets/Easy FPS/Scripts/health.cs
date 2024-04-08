@@ -26,4 +26,5 @@ public class PlayerHealth : MonoBehaviour
         Debug.Log("Player died!"); // Example: Log a message to the console
         Destroy(gameObject); // Destroy the player GameObject
     }
+
 }
